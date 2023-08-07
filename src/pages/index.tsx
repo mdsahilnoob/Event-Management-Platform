@@ -6,6 +6,9 @@ import Switcher from "../../components/Switcher"
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  useEffect(()=>{
+    localStorage.setItem('theme', 'light')
+  }, [])
   
   return (
     <main
