@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export default function useDarkSide() {
-    // const initialTheme = localStorage.getItem('theme')
+
     const [theme, setTheme] = useState(""); // Initialize with an empty string
 
     useEffect(() => {
