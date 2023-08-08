@@ -69,7 +69,7 @@ const Navbar: React.FC = () => {
     <div>
       {isMobile ? (
         <>
-          <div className="h-12 w-12 ml-3 fixed top-2 z-20 dark:text-light bg-dark/20 backdrop-blur-md">
+          <div className="h-12 w-12 ml-3 fixed top-2 z-20 text-light bg-dark/20 backdrop-blur-md">
             <Hamburger toggled={isOpen} onToggle={toggled => {
               setIsOpen(toggled)
               console.log(toggled)
