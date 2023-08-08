@@ -14,3 +14,13 @@ export const heroNews = [
     image: "/user-experience.png",
   },
 ];
+
+export const loginNews = [
+  {
+    name: "l'Ibento",
+    title: "Ibento automates the permission hierarchy in campus",
+    content:
+      "With Ibento, you can define permission levels and automate applications with ease",
+    image: "/user-experience.png",
+  },
+]
