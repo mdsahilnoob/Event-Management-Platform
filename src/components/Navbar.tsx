@@ -1,18 +1,35 @@
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect } from "react";
 import Switcher from "./Switcher";
 import Image from "next/image";
 import { Sling as Hamburger } from "hamburger-react";
+import { motion } from "framer-motion"
+import { slideInVariants } from "@/utils";
 
-const mobileNav = () => {
+interface mobileNavProps {
+  isOpen: boolean,
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const MobileNav: React.FC<mobileNavProps> = ({ isOpen, setIsOpen }) => {
+
   return (
     <div className="">
-      Mobile nav
+      <div
+        className="w-full h-screen text-center fixed top-2 bg-light/50 backdrop-blur-lg text-dark z-10 flex justify-center ">
+        <ul className="flex items-center gap-10 flex-col text-lg mt-32 font-bold">
+          <li className="cursor-pointer">Home</li>
+          <li className="cursor-pointer">About</li>
+          <li className="cursor-pointer">Login</li>
+          <li className="cursor-pointer">Get Started</li>
+          <Switcher />
+        </ul>
+      </div>
     </div>
   )
 }
 
-const laptopNav = () => { 
-  return(
+const LaptopNav = () => {
+  return (
     <div className="xl:w-fit md:max-w-fit hidden md:flex bg-dark/20 backdrop-blur-md h-fit xl:gap-48 md:gap-16 my-10 rounded-full md:px-6 lg:px-10 py-4 items-center dark:bg-dark/50 ">
       <div className="flex gap-4 items-center">
         <Image src="./logo-white.svg" alt="" className="filter invert dark:filter-none w-10 h-10" width={15} height={15} />
@@ -31,12 +48,13 @@ const laptopNav = () => {
   )
 }
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false);
-  useEffect(()=>{
+  useEffect(() => {
     setIsMobile(window.innerWidth < 800)
-  },[])
-  
+  }, [])
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 800);
@@ -48,7 +66,26 @@ const Navbar = () => {
     };
   }, []);
 
-  return isMobile ? mobileNav() : laptopNav()
+  return (
+
+    <div>
+      {isMobile ? (
+        <>
+          <div className="h-12 w-12 fixed top-2 z-20 dark:text-light bg-dark/20 backdrop-blur-md">
+            <Hamburger toggled={isOpen} onToggle={toggled => {
+              setIsOpen(toggled)
+              console.log(toggled)
+            }} />
+          </div>
+          <div className={`${isOpen?"block":"hidden transition duration-200 ease-in-out"}`}>
+            <MobileNav isOpen={isOpen} setIsOpen={setIsOpen} />
+          </div>
+        </>
+      ) : (
+        <LaptopNav />
+      )}
+    </div>
+  )
 };
 
 export default Navbar;
