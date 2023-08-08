@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import Switcher from "./Switcher";
 import Image from "next/image";
 import { Sling as Hamburger } from "hamburger-react";
@@ -32,8 +32,11 @@ const laptopNav = () => {
 }
 
 const Navbar = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 800);
-
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(()=>{
+    setIsMobile(window.innerWidth < 800)
+  },[])
+  
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 800);
