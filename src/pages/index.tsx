@@ -22,7 +22,7 @@ export default function Home() {
         <div className="fixed top-0 z-10 flex md:w-full justify-center">
           <Navbar />
         </div>
-        <section className="flex flex-col w-full md:mx-16 px-2 mb-10 h-screen md:mt-44 mt-10 ">
+        <section className="flex flex-col w-full md:mx-16 px-2 mb-10 h-fit md:mt-44 mt-10 ">
           <div className="flex gap-24 md:flex-row flex-col">
             <div className="flex flex-col md:w-[60vw] w-full gap-10">
               <div className=" border-dark dark:border-light border-2 gap-8 p-10 md:p-0 h-full flex flex-col items-center justify-center">
@@ -57,6 +57,9 @@ export default function Home() {
               ))}
             </div>
           </div>
+        </section>
+        <section>
+
         </section>
       </main>
     </div>
