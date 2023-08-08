@@ -31,7 +31,7 @@ export default function Home() {
                 </h1>
                 <div className="flex flex-col gap-4">
                   <h3 className="text-lg">Work Smart, Event Hard</h3>
-                  <button className="text-dark bg-light px-9 py-2">
+                  <button className="text-dark dark:bg-light bg-light_tert px-9 py-2">
                     Get Started
                   </button>
                 </div>
