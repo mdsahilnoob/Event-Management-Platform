@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import Switcher from "./Switcher";
 import Image from "next/image";
 import { Sling as Hamburger } from "hamburger-react";
-import { motion } from "framer-motion"
-import { slideInVariants } from "@/utils";
 
 interface mobileNavProps {
   isOpen: boolean,
@@ -71,7 +69,7 @@ const Navbar: React.FC = () => {
     <div>
       {isMobile ? (
         <>
-          <div className="h-12 w-12 fixed top-2 z-20 dark:text-light bg-dark/20 backdrop-blur-md">
+          <div className="h-12 w-12 ml-3 fixed top-2 z-20 dark:text-light bg-dark/20 backdrop-blur-md">
             <Hamburger toggled={isOpen} onToggle={toggled => {
               setIsOpen(toggled)
               console.log(toggled)
