@@ -10,6 +10,7 @@ module.exports = {
       light: "#C3C3C3",
       dark: "#181818",
       tertiary: "#8EEBFF",
+      light_tert:"#a8a8a8",
     },
     extend: {
       backgroundImage: {
