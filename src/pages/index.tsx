@@ -1,16 +1,16 @@
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useEffect } from "react";
-import Switcher from "../components/Switcher";
 import Navbar from "../components/Navbar";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import NewsCards from "@/components/NewsCards";
 import { heroNews } from "../../constants";
-import { Sling as Hamburger } from "hamburger-react";
+import {useState} from "react"
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [active, setActive] = useState("home")
+
   useEffect(() => {
     localStorage.setItem("theme", "light");
   }, []);
@@ -20,9 +20,9 @@ export default function Home() {
       <main
         className={`bg-light dark:bg-dark  min-h-screen h-fit text-dark dark:text-light overflow-x-hidden transition duration-100 ease-in-out`}
       >
-        
+
         <div className="fixed top-0 z-10 flex md:w-full justify-center">
-          <Navbar />
+          <Navbar active={active} setActive={setActive}/>
         </div>
         <div className="px-5 md:px-0">
 

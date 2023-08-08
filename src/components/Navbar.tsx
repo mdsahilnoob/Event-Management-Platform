@@ -3,12 +3,7 @@ import Switcher from "./Switcher";
 import Image from "next/image";
 import { Sling as Hamburger } from "hamburger-react";
 
-interface mobileNavProps {
-  isOpen: boolean,
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-const MobileNav: React.FC<mobileNavProps> = ({ isOpen, setIsOpen }) => {
+const MobileNav = () => {
 
   return (
     <div className="">
@@ -26,7 +21,14 @@ const MobileNav: React.FC<mobileNavProps> = ({ isOpen, setIsOpen }) => {
   )
 }
 
-const LaptopNav = () => {
+interface laptopNavProps{
+  active:string
+  setActive:React.Dispatch<React.SetStateAction<string>>
+}
+
+const LaptopNav:React.FC<laptopNavProps> = ({
+  active, setActive
+}) => {
   return (
     <div className="xl:w-fit md:max-w-fit hidden md:flex bg-dark/20 backdrop-blur-md h-fit xl:gap-48 md:gap-16 my-10 rounded-full md:px-6 lg:px-10 py-4 items-center dark:bg-dark/50 ">
       <div className="flex gap-4 items-center">
@@ -35,10 +37,30 @@ const LaptopNav = () => {
       </div>
       <div>
         <ul className="flex items-center md:gap-10 lg:gap-10 xl:gap-16 lg:text-xl">
-          <li className="cursor-pointer">Home</li>
-          <li className="cursor-pointer">About</li>
-          <li className="cursor-pointer">Login</li>
-          <li className="cursor-pointer">Get Started</li>
+          <li className={`cursor-pointer ${active==="home"?"text-light font-semibold dark:text-tertiary":""}`}
+          onClick={(e)=>{
+            e.preventDefault()
+            setActive("home")
+          }}
+          >Home</li>
+          <li className={`cursor-pointer ${active==="about"?"text-light font-semibold dark:text-tertiary":""}`}
+            onClick={(e)=>{
+              e.preventDefault()
+              setActive("about")
+            }}
+          >About</li>
+          <li className={`cursor-pointer ${active==="login"?"text-light font-semibold dark:text-tertiary":""}`}
+          onClick={(e)=>{
+            e.preventDefault()
+            setActive("login")
+          }}
+          >Login</li>
+          <li className={`cursor-pointer ${active==="getStarted"?"text-light font-semibold dark:text-tertiary":""}`}
+          onClick={(e)=>{
+            e.preventDefault()
+            setActive("getStarted")
+          }}
+          >Get Started</li>
           <Switcher />
         </ul>
       </div>
@@ -46,7 +68,14 @@ const LaptopNav = () => {
   )
 }
 
-const Navbar: React.FC = () => {
+interface navbarProps{
+  active:string
+  setActive:React.Dispatch<React.SetStateAction<string>>
+}
+
+const Navbar: React.FC<navbarProps> = ({
+  active,setActive
+}) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
@@ -76,11 +105,11 @@ const Navbar: React.FC = () => {
             }} />
           </div>
           <div className={`${isOpen?"block":"hidden transition duration-200 ease-in-out"}`}>
-            <MobileNav isOpen={isOpen} setIsOpen={setIsOpen} />
+            <MobileNav />
           </div>
         </>
       ) : (
-        <LaptopNav />
+        <LaptopNav active={active} setActive={setActive}/>
       )}
     </div>
   )
