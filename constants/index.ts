@@ -18,9 +18,9 @@ export const heroNews = [
 export const loginNews = [
   {
     name: "l'Ibento",
-    title: "Ibento automates the permission hierarchy in campus",
+    title: "Ibento Welcomes You Back to Creating Wonderful Events!",
     content:
-      "With Ibento, you can define permission levels and automate applications with ease",
+      "",
     image: "/user-experience.png",
   },
 ]
