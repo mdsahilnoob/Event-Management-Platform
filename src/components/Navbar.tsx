@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Switcher from "./Switcher";
 import Image from "next/image";
 import { Sling as Hamburger } from "hamburger-react";
+import Link from 'next/link';
 
 const MobileNav = () => {
 
@@ -42,7 +43,9 @@ const LaptopNav:React.FC<laptopNavProps> = ({
             e.preventDefault()
             setActive("home")
           }}
-          >Home</li>
+          >
+            <Link href="/">Home</Link>
+          </li>
           <li className={`cursor-pointer ${active==="about"?"text-light font-semibold dark:text-tertiary":""}`}
             onClick={(e)=>{
               e.preventDefault()
@@ -54,13 +57,16 @@ const LaptopNav:React.FC<laptopNavProps> = ({
             e.preventDefault()
             setActive("login")
           }}
-          >Login</li>
+          > <Link href="/login">Login</Link>
+          </li>
           <li className={`cursor-pointer ${active==="getStarted"?"text-light font-semibold dark:text-tertiary":""}`}
           onClick={(e)=>{
             e.preventDefault()
             setActive("getStarted")
           }}
-          >Get Started</li>
+          >
+            <Link href="/register">Get Started</Link>
+          </li>
           <Switcher />
         </ul>
       </div>

@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import NewsCards from "@/components/NewsCards";
 import { loginNews } from "../../constants";
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 const Login = () => {
