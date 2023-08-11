@@ -45,7 +45,7 @@ const LaptopNav: React.FC<laptopNavProps> = ({ active, setActive }) => {
           height={15}
         />
         <h1 className="uppercase md:text-3xl lg:text-5xl tracking-[14px] cursor-pointer">
-          Ibento
+          <Link href="/">Ibento</Link>
         </h1>
       </div>
       <div>
@@ -74,7 +74,7 @@ const LaptopNav: React.FC<laptopNavProps> = ({ active, setActive }) => {
               setActive("about");
             }}
           >
-            About
+            <Link href="/#about">About</Link>
           </li>
           <li
             className={`cursor-pointer ${

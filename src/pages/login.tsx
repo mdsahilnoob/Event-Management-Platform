@@ -15,7 +15,8 @@ const Login = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem("theme", "light");
+    if(!localStorage.getItem("theme"))
+      localStorage.setItem("theme", "light");
   }, []);
 
   return (

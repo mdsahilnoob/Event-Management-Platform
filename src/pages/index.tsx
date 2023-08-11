@@ -14,7 +14,8 @@ export default function Home() {
   const [active, setActive] = useState("home");
 
   useEffect(() => {
-    localStorage.setItem("theme", "light");
+    if(!localStorage.getItem("theme"))
+      localStorage.setItem("theme", "light");
   }, []);
 
   return (
@@ -61,7 +62,7 @@ export default function Home() {
               </div>
             </div>
           </section>
-          <section className="mt-10">
+          <section className="mt-10" id="about">
             <About />
           </section>
         </div>

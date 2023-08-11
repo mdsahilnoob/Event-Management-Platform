@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 
 const About = () => {
+  
   return (
     <div className='flex md:flex-row flex-col md:gap-0 gap-5 w-full justify-between pb-10 md:px-16 px-2 min-h-[50vh]'>
         <div className='dark:bg-light bg-dark md:w-1/4 flex md:flex-col w-full flex-row items-center justify-between mr-10'>

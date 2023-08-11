@@ -15,9 +15,10 @@ const Login = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem("theme", "light");
+    if(!localStorage.getItem("theme"))
+      localStorage.setItem("theme", "light");
   }, []);
-
+  
   return (
     <div className={inter.className}>
       <div className="fixed top-0 z-10 flex md:w-full justify-center text-dark dark:text-light">
