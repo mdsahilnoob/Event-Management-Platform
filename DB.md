@@ -1,0 +1,55 @@
+# Database Documentation
+
+To start MariaDB on XAMPP:
+1. Open Shell
+2. Run:
+    ```
+    mysql -u root -p
+    ```
+3. Enter password if any or simply enter
+
+## DDL:
+
+CREATE DATABASE IBENTO
+
+USE IBENTO
+
+#### For College Table
+
+```
+CREATE TABLE COLLEGE (
+    id BIGINT PRIMARY KEY,
+    name VARCHAR(255),
+    contact BIGINT,
+    address VARCHAR(255),
+    pincode INT(6),
+    emailDomain VARCHAR(50),
+    userCount BIGINT,
+    status ENUM('Active', 'Inactive', 'Pending'),
+    dateOfJoining DATE
+);
+```
+
+#### ROLE TABLE:
+
+```
+CREATE TABLE ROLE (
+id BIGINT PRIMARY KEY,
+name ENUM('Admin', 'Director', 'Dean', 'Registrar', 'Head of Activities', 'Faculty in Charge', 'Faculty', 'Club Lead', 'Co-Lead', 'Student', 'Guest'),
+accessLevel JSON
+);
+```
+
+#### USER TABLE:
+
+```
+CREATE TABLE USER (
+    id BIGINT PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    roleId BIGINT,
+    department VARCHAR(255),
+    joiningDate DATE,
+    FOREIGN KEY (roleId) REFERENCES ROLE(id)
+);
+```
