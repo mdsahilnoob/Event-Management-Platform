@@ -3,6 +3,8 @@ import Switcher from "./Switcher";
 import Image from "next/image";
 import { Sling as Hamburger } from "hamburger-react";
 import Link from "next/link";
+import { useSnapshot } from "valtio";
+import state from "../../store";
 
 const MobileNav = () => {
   return (
@@ -28,12 +30,8 @@ const MobileNav = () => {
   );
 };
 
-interface laptopNavProps {
-  active: string;
-  setActive: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const LaptopNav: React.FC<laptopNavProps> = ({ active, setActive }) => {
+const LaptopNav = () => {
+  const snap=useSnapshot(state)
   return (
     <div className="xl:w-fit md:max-w-fit hidden md:flex bg-dark/20 backdrop-blur-md h-fit xl:gap-48 md:gap-16 my-10 rounded-full md:px-6 lg:px-10 py-4 items-center dark:bg-dark/50 ">
       <div className="flex gap-4 items-center">
@@ -52,39 +50,39 @@ const LaptopNav: React.FC<laptopNavProps> = ({ active, setActive }) => {
         <ul className="flex items-center md:gap-10 lg:gap-10 xl:gap-16 lg:text-xl">
           <li
             className={`cursor-pointer ${
-              active === "home"
+              snap.active === "home"
                 ? "text-light font-semibold dark:text-tertiary"
                 : ""
             }`}
             onClick={(e) => {
               e.preventDefault();
-              setActive("home");
+              state.active=("home");
             }}
           >
             <Link href="/">Home</Link>
           </li>
           <li
             className={`cursor-pointer ${
-              active === "about"
+              snap.active === "about"
                 ? "text-light font-semibold dark:text-tertiary"
                 : ""
             }`}
             onClick={(e) => {
               e.preventDefault();
-              setActive("about");
+              state.active="about";
             }}
           >
             <Link href="/#about">About</Link>
           </li>
           <li
             className={`cursor-pointer ${
-              active === "login"
+              snap.active === "login"
                 ? "text-light font-semibold dark:text-tertiary"
                 : ""
             }`}
             onClick={(e) => {
               e.preventDefault();
-              setActive("login");
+              state.active=("login");
             }}
           >
             {" "}
@@ -92,13 +90,13 @@ const LaptopNav: React.FC<laptopNavProps> = ({ active, setActive }) => {
           </li>
           <li
             className={`cursor-pointer ${
-              active === "getStarted"
+              snap.active === "getStarted"
                 ? "text-light font-semibold dark:text-tertiary"
                 : ""
             }`}
             onClick={(e) => {
               e.preventDefault();
-              setActive("getStarted");
+              state.active="getStarted";
             }}
           >
             <Link href="/register">Get Started</Link>
@@ -115,7 +113,7 @@ interface navbarProps {
   setActive: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Navbar: React.FC<navbarProps> = ({ active, setActive }) => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
@@ -155,7 +153,7 @@ const Navbar: React.FC<navbarProps> = ({ active, setActive }) => {
           </div>
         </>
       ) : (
-        <LaptopNav active={active} setActive={setActive} />
+        <LaptopNav />
       )}
     </div>
   );

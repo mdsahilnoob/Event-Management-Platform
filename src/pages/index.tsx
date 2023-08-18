@@ -11,7 +11,6 @@ import { Button } from "@material-tailwind/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [active, setActive] = useState("home");
 
   useEffect(() => {
     if(!localStorage.getItem("theme"))
@@ -22,7 +21,7 @@ export default function Home() {
     <div className={inter.className}>
       <main className={`bg-light dark:bg-dark min-h-screen h-fit text-dark dark:text-light overflow-x-hidden transition duration-100 ease-in-out`}>
         <div className="fixed top-0 z-10 flex md:w-full justify-center">
-          <Navbar active={active} setActive={setActive} />
+          <Navbar />
         </div>
         <div className="px-5 md:px-2">
           <section className="flex pb-10 flex-col w-full md:mx-16 mb-10 h-fit md:mt-44 mt-16 ">
@@ -63,7 +62,7 @@ export default function Home() {
             </div>
           </section>
           <section className="mt-10" id="about">
-            <About />
+            <About />   
           </section>
         </div>
       </main>
