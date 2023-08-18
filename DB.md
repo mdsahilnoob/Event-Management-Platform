@@ -6,6 +6,10 @@ To start MariaDB on XAMPP:
     ```
     mysql -u root -p
     ```
+    or
+    ```
+    mysql -u root -r
+    ```
 3. Enter password if any or simply enter
 
 ## DDL:
@@ -52,4 +56,8 @@ CREATE TABLE USER (
     joiningDate DATE,
     FOREIGN KEY (roleId) REFERENCES ROLE(id)
 );
+```
+
+#### EVENT:
+```
 ```
