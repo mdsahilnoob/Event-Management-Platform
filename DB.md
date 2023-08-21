@@ -21,11 +21,12 @@ USE IBENTO
 #### For College Table
 
 ```
-CREATE TABLE COLLEGE (
-    id BIGINT PRIMARY KEY,
+CREATE TABLE COLLEGES (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255),
     contact BIGINT,
     address VARCHAR(255),
+    email VARCHAR(255),
     pincode INT(6),
     emailDomain VARCHAR(50),
     userCount BIGINT,
@@ -37,7 +38,7 @@ CREATE TABLE COLLEGE (
 #### ROLE TABLE:
 
 ```
-CREATE TABLE ROLE (
+CREATE TABLE ROLES (
 id BIGINT PRIMARY KEY,
 name ENUM('Admin', 'Director', 'Dean', 'Registrar', 'Head of Activities', 'Faculty in Charge', 'Faculty', 'Club Lead', 'Co-Lead', 'Student', 'Guest'),
 accessLevel JSON
@@ -47,7 +48,7 @@ accessLevel JSON
 #### USER TABLE:
 
 ```
-CREATE TABLE USER (
+CREATE TABLE USERS (
     id BIGINT PRIMARY KEY,
     name VARCHAR(255),
     email VARCHAR(255),
