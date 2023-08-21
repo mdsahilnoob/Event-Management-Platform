@@ -5,9 +5,13 @@ const College = connection.define('college', {
     id: {
         type: DataTypes.BIGINT,
         primaryKey: true,
-        allowNull: false
+        allowNull: false,
+        autoIncrement: true,
     },
     name: {
+        type: DataTypes.STRING,
+    },
+    email: {
         type: DataTypes.STRING,
     },
     contact: {
@@ -29,9 +33,15 @@ const College = connection.define('college', {
         type: DataTypes.ENUM,
         values: ['Active', 'Inactive', 'Pending'],
     },
-    date: {
+    dateOfJoining: {
         type: DataTypes.DATEONLY,
     },
 
-})
+},
+    {
+        timestamps:false
+    }
+)
+
+
 export default College

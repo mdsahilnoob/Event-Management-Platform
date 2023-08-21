@@ -22,7 +22,7 @@ const Login = () => {
   return (
     <div className={inter.className}>
       <div className="fixed top-0 z-10 flex md:w-full justify-center text-dark dark:text-light">
-        <Navbar active={active} setActive={setActive} />
+        <Navbar />
       </div>
       <div className="bg-light dark:bg-dark px-5 md:px-0 min-h-screen h-fit text-dark dark:text-light overflow-x-hidden transition duration-100 ease-in-out pb-5">
         <div className="flex md:mt-44 px-0 justify-between md:flex-row flex-col md:items-start items-center md:gap-10 md:pl-10 gap-10 mt-20">
@@ -52,9 +52,17 @@ const Login = () => {
             />
             <Input
               type="text"
-              name="contactEmailDomain"
+              name="EmailDomain"
               size="lg"
-              placeholder="Contact Email Domain"
+              placeholder="Email Domain"
+              required
+              className="px-5 py-3 rounded-md border-dark/50 text-dark dark:text-light placeholder:text-dark dark:placeholder:text-light dark:border-light outline-none border-2 bg-light dark:bg-dark"
+            />
+            <Input
+              type="text"
+              name="contact"
+              size="lg"
+              placeholder="Contact"
               required
               className="px-5 py-3 rounded-md border-dark/50 text-dark dark:text-light placeholder:text-dark dark:placeholder:text-light dark:border-light outline-none border-2 bg-light dark:bg-dark"
             />
