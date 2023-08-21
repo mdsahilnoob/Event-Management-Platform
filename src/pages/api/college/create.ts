@@ -20,7 +20,6 @@ export default async function create(
         const name=req.body.name
         const contact=req.body.contact
         const date=new Date()
-        console.log(date.toISOString().split('T')[0])
         try{
 
           const college = await College.create({
