@@ -30,16 +30,15 @@ export default async function create(
             pincode:pincode,
             contact:contact,
             status:'Pending',
-            dateOfJoining:new Date()
+            dateOfJoining:new Date(),
+            userCount:0
           })
-          
-          // await college.save()
         } catch(e){
           console.error(e)
         }
 
-        res.status(200).json({ message: 'post' })
+        res.status(200).json({ message: 'College Registered! We will contact you soon' })
     } else{
-        res.json({message:'get'})
+        res.json({message:'GET'})
     }
 }

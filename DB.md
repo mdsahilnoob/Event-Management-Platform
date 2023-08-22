@@ -14,9 +14,9 @@ To start MariaDB on XAMPP:
 
 ## DDL:
 
-CREATE DATABASE IBENTO
+CREATE DATABASE IBENTO;
 
-USE IBENTO
+USE IBENTO;
 
 #### For College Table
 
@@ -55,7 +55,7 @@ CREATE TABLE USERS (
     roleId BIGINT,
     department VARCHAR(255),
     joiningDate DATE,
-    FOREIGN KEY (roleId) REFERENCES ROLE(id)
+    FOREIGN KEY (roleId) REFERENCES ROLES(id)
 );
 ```
 
