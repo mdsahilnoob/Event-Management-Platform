@@ -1,43 +1,71 @@
-import React, { useState, useEffect } from "react";
-import Navbar from "@/components/Navbar";
+import React, { useState,useEffect} from "react";
 import { Input, Button } from "@material-tailwind/react";
-import { Inter } from "next/font/google";
-import NewsCards from "@/components/NewsCards";
+import emailjs from "emailjs-com";
 import { loginNews } from "../../constants";
+import Navbar from "@/components/Navbar";
+import NewsCards from "@/components/NewsCards";
+import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const Login = () => {
-  const [active, setActive] = useState("login");
-  const [college, setcollege] = useState("")
-  const [email, setemail] = useState("")
-  const [domain, setdomain] = useState("")
-  const [contact, setcontact] = useState("")
-  const [address, setaddress] = useState("")
-  const [pincode, setpincode] = useState(0)
+  const [college, setCollege] = useState("");
+  const [email, setEmail] = useState("");
+  const [domain, setDomain] = useState("");
+  const [contact, setContact] = useState("");
+  const [address, setAddress] = useState("");
+  const [pincode, setPincode] = useState(0);
 
-  const handleFormSubmit = async(e:any) => {
-    e.preventDefault()
-    
-    const response = await fetch('./api/college/create', {
-      method:'POST',
+  const handleFormSubmit = async (e:any) => {
+    e.preventDefault();
+
+    const response = await fetch("./api/college/create", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',      
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         pincode: pincode,
         address: address,
         emailDomain: domain,
-        email:email,
+        email: email,
         name: college,
         contact: contact,
-      })
-    })
+      }),
+    });
 
-    const data = await response.json()
+    const data = await response.json();
 
-    alert(data.message)
+    alert(data.message);
 
+    if (response.ok) {
+      sendConfirmationEmail();
+    }
+  };
+
+  const sendConfirmationEmail = async () => {
+     
+
+  emailjs.init("oI45cC0Fs5NF4U1Cw");
+    const emailUserID = "service_dqyuc71";
+    const emailTemplateID = "template_2emjbl3";
+    emailjs.init(emailUserID);
+
+    const recipientEmail = email;
+    const subject = "Registration Confirmation";
+    const message = "Thank you for registering!";
+
+    try {
+      const emailResponse = await emailjs.send("smtp", emailTemplateID, {
+        from: "jayanti2919@gmail.com",
+        to: recipientEmail,
+        subject: subject,
+        text: message,
+      });
+      alert("Confirmation Email sent");
+    } catch (error) {
+      alert("Error sending confirmation email");
+    }
   };
 
   useEffect(() => {
@@ -67,7 +95,7 @@ const Login = () => {
               placeholder="College Name"
               required
               className="px-5 py-3 rounded-md border-dark/50 text-dark dark:text-light placeholder:text-dark dark:placeholder:text-light dark:border-light outline-none border-2 bg-light dark:bg-dark"
-              onChange={(e)=>{setcollege(e.target.value)}}
+              onChange={(e)=>{setCollege(e.target.value)}}
             />
             <Input
               type="email"
@@ -76,7 +104,7 @@ const Login = () => {
               placeholder="Email"
               required
               className="px-5 py-3 rounded-md border-dark/50 text-dark dark:text-light placeholder:text-dark dark:placeholder:text-light dark:border-light outline-none border-2 bg-light dark:bg-dark"
-              onChange={(e)=>{setemail(e.target.value)}}
+              onChange={(e)=>{setEmail(e.target.value)}}
             />
             <Input
               type="text"
@@ -85,7 +113,7 @@ const Login = () => {
               placeholder="Email Domain"
               required
               className="px-5 py-3 rounded-md border-dark/50 text-dark dark:text-light placeholder:text-dark dark:placeholder:text-light dark:border-light outline-none border-2 bg-light dark:bg-dark"
-              onChange={(e)=>{setdomain(e.target.value)}}
+              onChange={(e)=>{setDomain(e.target.value)}}
             />
             <Input
               type="text"
@@ -94,7 +122,7 @@ const Login = () => {
               placeholder="Contact"
               required
               className="px-5 py-3 rounded-md border-dark/50 text-dark dark:text-light placeholder:text-dark dark:placeholder:text-light dark:border-light outline-none border-2 bg-light dark:bg-dark"
-              onChange={(e)=>{setcontact(e.target.value)}}
+              onChange={(e)=>{setContact(e.target.value)}}
             />
             <div className="flex flex-col md:flex-row md:gap-2">
               <Input
@@ -104,7 +132,7 @@ const Login = () => {
                 placeholder="Address"
                 required
                 className="px-5 py-3 rounded-md border-dark/50 text-dark dark:text-light placeholder:text-dark dark:placeholder:text-light dark:border-light outline-none border-2 bg-light dark:bg-dark"
-                onChange={(e)=>{setaddress(e.target.value)}}
+                onChange={(e)=>{setAddress(e.target.value)}}
               />
               <Input
                 type="number"
@@ -113,7 +141,7 @@ const Login = () => {
                 placeholder="Pincode"
                 required
                 className="px-5 py-3 rounded-md border-dark/50 text-dark dark:text-light placeholder:text-dark dark:placeholder:text-light dark:border-light outline-none border-2 bg-light dark:bg-dark"
-                onChange={(e)=>{setpincode(parseInt(e.target.value))}}
+                onChange={(e)=>{setPincode(parseInt(e.target.value))}}
               />
             </div>
             <Button
