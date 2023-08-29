@@ -39,7 +39,7 @@ CREATE TABLE COLLEGES (
 
 ```
 CREATE TABLE ROLES (
-id BIGINT PRIMARY KEY,
+id BIGINT AUTO_INCREMENT PRIMARY KEY,
 name ENUM('Admin', 'Director', 'Dean', 'Registrar', 'Head of Activities', 'Faculty in Charge', 'Faculty', 'Club Lead', 'Co-Lead', 'Student', 'Guest'),
 accessLevel JSON
 );
@@ -49,13 +49,16 @@ accessLevel JSON
 
 ```
 CREATE TABLE USERS (
-    id BIGINT PRIMARY KEY,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    collegeId BIGINT,
     name VARCHAR(255),
     email VARCHAR(255),
     roleId BIGINT,
     department VARCHAR(255),
+    password VARCHAR(255),
     joiningDate DATE,
-    FOREIGN KEY (roleId) REFERENCES ROLES(id)
+    FOREIGN KEY (roleId) REFERENCES ROLES(id),
+    FOREIGN KEY (collegeId) REFERENCES COLLEGES(id)
 );
 ```
 
