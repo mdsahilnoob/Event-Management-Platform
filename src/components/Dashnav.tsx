@@ -10,10 +10,10 @@ const LaptopNav = () => {
   const snap = useSnapshot(state);
 
   return (
-    <div className="w-full bg-dark/20 backdrop-blur-md h-16 flex justify-between items-center py-4 px-6 md:px-10">
-      <div className="flex items-center">
+    <div className="w-full bg-dark/20 backdrop-blur-md h-16 flex justify-between dark:bg-[#D9D9D9]/20 items-center py-4 px-6 md:px-10 dark:text-light">
+      <div className="flex items-center gap-2">
         <Image
-          src="../logo-white.svg"
+          src="/logo-white.svg"
           alt=""
           className="filter invert dark:filter-none w-10 h-10"
           width={15}
@@ -83,5 +83,4 @@ const LaptopNav = () => {
     </div>
   );
 };
-
 export default LaptopNav;
