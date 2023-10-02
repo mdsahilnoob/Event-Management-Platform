@@ -1,7 +1,3 @@
-Certainly! Here's an example `CONTRIBUTING.md` file for your open-source project, which is a website written in TypeScript and Next.js. You can customize it to suit your project's specific needs and guidelines:
-
----
-
 # Contributing to Ibento
 
 Thank you for your interest in contributing to Ibento! We welcome contributions from the community to help improve and grow this project. Whether you're a developer, designer, or just passionate about the project, there are many ways to get involved.
@@ -79,6 +75,8 @@ If you're interested in contributing code to Ibento, please follow these steps:
 
 8. Open a pull request (PR) against the `main` branch of the original repository, providing a clear and concise description of your changes.
 
+Refer to the DB.md for database structure and SQL queries.
+
 ## Development Setup
 
 To set up your development environment for Ibento, you'll need:
@@ -107,6 +105,7 @@ To increase the chances of your PR being accepted, please ensure that:
 - Your code adheres to the project's coding guidelines.
 - You have included relevant tests for your changes.
 - Your commits are well-documented and follow a clear and concise naming convention.
+- For any UI changes, please add relevant screenshots and ensure that the color scheme is uniform throughout the website. Also, include a dark and light mode.
 
 ## License
 
