@@ -83,5 +83,4 @@ const LaptopNav = () => {
     </div>
   );
 };
-
 export default LaptopNav;
