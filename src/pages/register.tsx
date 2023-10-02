@@ -16,6 +16,38 @@ const Login = () => {
   const [address, setAddress] = useState("");
   const [pincode, setPincode] = useState(0);
 
+  const sendConfirmationEmail = (e:any) => {
+    e.preventDefault();
+
+    const emailUserID = "service_dqyuc71";
+    const emailTemplateID = "template_2emjbl3";
+    emailjs.init(emailUserID);
+
+    const recipientEmail = email;
+    const subject = "Registration Confirmation";
+    const message = "Thank you for registering!";
+
+    emailjs.send(
+      "service_dqyuc71", 
+      "template_2emjbl3", 
+      {
+        from_name: "Jayanti",
+        to_name: 'Recipient',
+        from_email: 'jayanti2919@gmail.com',
+        to_email: recipientEmail,
+        message: message,
+      },
+      "LMxYxFFeP9B1kg6RY",
+      )
+
+      .then(()=>{
+        alert("Thank you for getting in touch. I will get back to you as soon as possible.")
+      }, (error)=>{
+        alert("An error occurred!")
+        console.log(error)
+      })
+  }
+
   const handleFormSubmit = async (e:any) => {
     e.preventDefault();
 
@@ -39,34 +71,35 @@ const Login = () => {
     alert(data.message);
 
     if (response.ok) {
-      sendConfirmationEmail();
+      sendConfirmationEmail(e);
     }
   };
 
-  const sendConfirmationEmail = async () => {
+  // const sendConfirmationEmail = async () => {
      
 
-  emailjs.init("oI45cC0Fs5NF4U1Cw");
-    const emailUserID = "service_dqyuc71";
-    const emailTemplateID = "template_2emjbl3";
-    emailjs.init(emailUserID);
+  // emailjs.init("LMxYxFFeP9B1kg6RY");
+  //   const emailUserID = "service_dqyuc71";
+  //   const emailTemplateID = "template_2emjbl3";
+  //   emailjs.init(emailUserID);
 
-    const recipientEmail = email;
-    const subject = "Registration Confirmation";
-    const message = "Thank you for registering!";
+  //   const recipientEmail = email;
+  //   const subject = "Registration Confirmation";
+  //   const message = "Thank you for registering!";
 
-    try {
-      const emailResponse = await emailjs.send("smtp", emailTemplateID, {
-        from: "jayanti2919@gmail.com",
-        to: recipientEmail,
-        subject: subject,
-        text: message,
-      });
-      alert("Confirmation Email sent");
-    } catch (error) {
-      alert("Error sending confirmation email");
-    }
-  };
+  //   try {
+  //     const emailResponse = await emailjs.send("smtp", emailTemplateID, {
+  //       from: "jayanti2919@gmail.com",
+  //       to: recipientEmail,
+  //       subject: subject,
+  //       text: message,
+  //     });
+  //     alert("Confirmation Email sent");
+  //   } catch (error) {
+  //     alert("Error sending confirmation email");
+  //     console.log(error)
+  //   }
+  // };
 
   useEffect(() => {
     if(!localStorage.getItem("theme"))
