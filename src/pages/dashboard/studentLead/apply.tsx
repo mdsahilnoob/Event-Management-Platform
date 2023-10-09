@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import LaptopNav from "@/components/Dashnav";
-import {AiOutlineUpload} from "react-icons/ai"
+import {AiOutlinePlusSquare} from "react-icons/ai"
+import InputArea from "@/components/InputArea";
 
 const Apply = () => {
+  const [editors, setEditors] = useState<React.ReactNode[]>([]);
+  const [count, setCount] = useState(0)
+
+  const addInputArea = () => {
+    setEditors([...editors, <InputArea key={editors.length} />]);
+    setCount(count+1)
+    editors.pop();
+  }
   return (
     <div className="bg-light dark:bg-dark min-h-screen h-fit pb-5">
       <LaptopNav />
@@ -45,12 +54,18 @@ const Apply = () => {
               </div>
               <div className="flex flex-col">
                 <label htmlFor="Requirements">Requirements</label>
-                <textarea
-                  className="py-2 px-2 bg-light border-2 border-dark"
-                  rows={5} cols={10}
-                >
-                    Add Requirements
-                </textarea>
+                <div className="bg-light dark:bg-light">
+                  <div className="flex flex-col gap-2">
+                    {editors}
+                  </div>
+                  <button className="flex gap-1 items-center text-xs mt-2" onClick={(e)=>{
+                    e.preventDefault()
+                    addInputArea()
+                  }}>
+                    <AiOutlinePlusSquare />
+                    <span>Add</span>
+                  </button>
+                </div>
               </div>
             </div>
             <div className="flex mt-5 gap-5">
