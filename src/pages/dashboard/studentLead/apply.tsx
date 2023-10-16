@@ -69,8 +69,8 @@ const Apply = () => {
               </div>
             </div>
             <div className="flex mt-5 gap-5">
-                <input type="file" className="flex items-center gap-3 w-fit dark:bg-dark dark:text-light px-2 py-2" />
-                <button className="flex items-center gap-3 w-fit dark:bg-dark dark:text-light px-5 py-2" type="submit">
+                <input type="file" className="flex items-center gap-3 w-fit dark:bg-dark bg-dark text-light dark:text-light px-2 py-2" />
+                <button className="flex items-center gap-3 w-fit dark:bg-dark bg-dark text-light dark:text-light px-5 py-2" type="submit">
                     <span>Submit</span>
                 </button>
             </div>
