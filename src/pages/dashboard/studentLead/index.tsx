@@ -1,55 +1,58 @@
-import { Inter } from "next/font/google";
-import { useEffect } from "react";
-import Dashnav from "../../../components/Dashnav";
-import { AiOutlineArrowRight } from "react-icons/ai";
-import { Button } from "@material-tailwind/react";
-import Image from "next/image";
-import Link from "next/link";
+import { Inter } from 'next/font/google';
+import { useEffect } from 'react';
+import Dashnav from '../../../components/Dashnav';
+import { AiOutlineArrowRight } from 'react-icons/ai';
+import { Button } from '@material-tailwind/react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router'; // Import the router
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   useEffect(() => {
-    if (!localStorage.getItem("theme")) {
-      localStorage.setItem("theme", "light");
+    if (!localStorage.getItem('theme')) {
+      localStorage.setItem('theme', 'light');
     }
   }, []);
 
   const upcomingEvents = [
-    { title: "Clash Models", club: "GDSC", date: "06.10.2023" },
-    { title: "Clash Models", club: "GDSC", date: "06.10.2023" },
-    { title: "Clash Models", club: "GDSC", date: "06.10.2023" },
+    { title: 'Clash Models', club: 'GDSC', date: '06.10.2023' },
+    { title: 'Clash Models', club: 'GDSC', date: '06.10.2023' },
+    { title: 'Clash Models', club: 'GDSC', date: '06.10.2023' },
   ];
   const yourEvents = [
     {
-      applicationNo: "GD0001",
-      title: "Clash Models",
-      club: "GDSC",
-      date: "06.10.2023",
-      status: "Approved",
+      applicationNo: 'GD0001',
+      title: 'Clash Models',
+      club: 'GDSC',
+      date: '06.10.2023',
+      status: 'Approved',
     },
     {
-      applicationNo: "GD0002",
-      title: "Clash Models",
-      club: "GDSC",
-      date: "06.10.2023",
-      status: "Pending",
+      applicationNo: 'GD0002',
+      title: 'Clash Models',
+      club: 'GDSC',
+      date: '06.10.2023',
+      status: 'Pending',
     },
     {
-      applicationNo: "GD003",
-      title: "Clash Models",
-      club: "GDSC",
-      date: "06.10.2023",
-      status: "Approved",
+      applicationNo: 'GD003',
+      title: 'Clash Models',
+      club: 'GDSC',
+      date: '06.10.2023',
+      status: 'Approved',
     },
     {
-      applicationNo: "GD0004",
-      title: "Clash Models",
-      club: "GDSC",
-      date: "06.10.2023",
-      status: "Rejected",
+      applicationNo: 'GD0004',
+      title: 'Clash Models',
+      club: 'GDSC',
+      date: '06.10.2023',
+      status: 'Rejected',
     },
   ];
+
+  const router = useRouter(); // Initialize the router
 
   return (
     <div className={inter.className}>
@@ -105,12 +108,31 @@ export default function Home() {
 
                   <div className="flex flex-col gap-4 px-8">
                     {yourEvents.map((e) => (
-                        <div className="grid-cols-4 grid gap-5 font-medium" key={e.applicationNo}>
-                          <h3>{e.applicationNo}</h3>
-                          <Link href={`/dashboard/studentLead/details/${encodeURIComponent(e.applicationNo)}`}>{e.title}</Link>
-                          <h3>{e.date}</h3>
-                          <h3 className={e.status == "Approved" ? "text-[#096C00]": (e.status == 'Rejected' ? "text-[#C40000]" : "text-[#148DA8]")}>{e.status}</h3>
-                        </div>
+                      <div
+                        className="grid-cols-4 grid gap-5 font-medium"
+                        key={e.applicationNo}
+                      >
+                        <h3>{e.applicationNo}</h3>
+                        <Link
+                          href={`/dashboard/studentLead/details/${encodeURIComponent(
+                            e.applicationNo
+                          )}`}
+                        >
+                          {e.title}
+                        </Link>
+                        <h3>{e.date}</h3>
+                        <h3
+                          className={
+                            e.status == 'Approved'
+                              ? 'text-[#096C00]'
+                              : e.status == 'Rejected'
+                              ? 'text-[#C40000]'
+                              : 'text-[#148DA8]'
+                          }
+                        >
+                          {e.status}
+                        </h3>
+                      </div>
                     ))}
                     <Button
                       className={`text-dark bg-light dark:bg-light_tert font-regular px-20 py-2 light dark`}
@@ -121,6 +143,7 @@ export default function Home() {
                 </div>
                 <Button
                   className={`uppercase h-20 md:h-32 text-dark bg-light_tert font-normal dark:bg-light p-4 light dark`}
+                  onClick={() => router.push('/dashboard/studentLead/apply')}
                 >
                   <div className="w-full h-full border-2 md:text-2xl text-md md:tracking-[18px] tracking-wide border-dark flex justify-center items-center transition ease-in duration-100 py-5">
                     Apply for New Event
@@ -131,12 +154,7 @@ export default function Home() {
             </div>
           </section>
           <section className="flex flex-col dark:bg-light w-full items-center py-10 gap-10 rounded-md bg-dark text-light">
-            <Image
-              src="/devansh.png"
-              alt="profile-pic"
-              width={64}
-              height={64}
-            />
+            <Image src="/devansh.png" alt="profile-pic" width={64} height={64} />
             <div className="dark:bg-dark dark:text-light bg-light text-dark w-full items-center flex justify-center py-2 text-xl">
               Devansh Asthana
             </div>
