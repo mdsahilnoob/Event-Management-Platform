@@ -62,7 +62,7 @@ const LaptopNav = () => {
               state.active = "allEvents";
             }}
           >
-            <Link href="/all-events">All Events</Link>
+            <Link href="/dashboard/studentLead/allEvents">All Events</Link>
           </li>
           <li
             className={`cursor-pointer ${
