@@ -14,7 +14,7 @@ const LaptopNav = () => {
       <div className="flex items-center gap-2">
         <Image
           src="/logo-white.svg"
-          alt=""
+          alt="logo"
           className="filter invert dark:filter-none w-10 h-10"
           width={15}
           height={15}
@@ -36,7 +36,7 @@ const LaptopNav = () => {
               state.active = "dashboard";
             }}
           >
-            <Link href="/dashboard">Dashboard</Link>
+            <Link href="/dashboard/studentLead">Dashboard</Link>
           </li>
           <li
             className={`cursor-pointer ${
@@ -49,7 +49,7 @@ const LaptopNav = () => {
               state.active = "createEvent";
             }}
           >
-            <Link href="/create-event">Create Event</Link>
+            <Link href="/dashboard/studentLead/apply">Create Event</Link>
           </li>
           <li
             className={`cursor-pointer ${
@@ -75,7 +75,7 @@ const LaptopNav = () => {
               state.active = "trackEvents";
             }}
           >
-            <Link href="/track-events">Track your events</Link>
+            <Link href="/dashboard/studentLead/details">Track your events</Link>
           </li>
           <Switcher />
         </ul>
