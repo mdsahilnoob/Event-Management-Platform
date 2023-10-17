@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Dashnav from "../../../components/Dashnav";
+import LaptopNav from "@/components/Navbar";
 import Link from "next/link";
 
 export default function EventsPage() {
@@ -114,13 +114,13 @@ export default function EventsPage() {
 
   return (
     <div>
-      <div className="fixed top-0 z-10 md:w-full justify-center flex flex-col">
-        <Dashnav />
+      <div className="fixed top-0 z-10 md:w-full justify-center flex flex-col items-center dark:text-light">
+        <LaptopNav />
       </div>
-      <main className="bg-light dark:bg-dark min-h-screen py-16 h-fit text-dark dark:text-light transition duration-100 ease-in-out">
+      <main className="bg-light dark:bg-dark min-h-screen py-28 h-fit text-dark dark:text-light transition duration-100 ease-in-out">
         <div className="px-5 md:px-20 flex py-10">
           <section className="flex pb-10 flex-col w-full md:px-10 mb-10 h-fit">
-            <div className="border-dark dark-border-light border-2 p-10 min-h-fit flex flex-col light dark">
+            <div className="border-dark dark:border-light border-2 p-10 min-h-fit flex flex-col light dark gap-5">
               <h2 className="text-xl md:text-3xl tracking-wide mb-4 px-8 mt-5 font-medium">
                 All Events:
               </h2>
@@ -130,14 +130,14 @@ export default function EventsPage() {
                 <h3>Date of Event</h3>
                 <h3>Click To Apply</h3>
               </div>
-              <div className="h-1 w-full bg-light"></div>
+              <div className="h-1 w-full dark:bg-light bg-dark"></div>
               <div className="flex flex-col gap-8 px-8">
                 {allEvents.map((e, index) => (
                   <div className="grid grid-cols-4 gap-5 font-medium" key={index}>
                     <h3>{e.club}</h3>
                     <h3>{e.title}</h3>
                     <h3>{e.date}</h3>
-                    <Link href={`/apply/${encodeURIComponent(e.title)}`}>Apply--></Link>
+                    <Link href={`/apply/${encodeURIComponent(e.title)}`}>Apply</Link>
                   </div>
                 ))}
               </div>

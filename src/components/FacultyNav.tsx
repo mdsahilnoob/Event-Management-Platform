@@ -49,7 +49,7 @@ const FacultyNav = () => {
               state.active = "createEvent";
             }}
           >
-            <Link href="/dashboard/studentLead/apply">Create Event</Link>
+            <Link href="/dashboard/facultyInCharge">Manage Club</Link>
           </li>
           <li
             className={`cursor-pointer ${
@@ -62,7 +62,7 @@ const FacultyNav = () => {
               state.active = "allEvents";
             }}
           >
-            <Link href="/all-events">All Events</Link>
+            <Link href="/allEvents">All Events</Link>
           </li>
           <li
             className={`cursor-pointer ${
